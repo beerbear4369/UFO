@@ -8,9 +8,9 @@ from typing import Tuple
 
 
 WELCOME_TEXT = """
-Welcome to use UFO🛸, A UI-focused Agent for Windows OS Interaction. 
+Welcome to use UFO, A UI-focused Agent for Windows OS Interaction.
 {art}
-Please enter your request to be completed🛸: """.format(
+Please enter your request to be completed: """.format(
     art=text2art("UFO")
 )
 
@@ -86,7 +86,7 @@ def sensitive_step_asker(action, control_text) -> bool:
     """
 
     utils.print_with_color(
-        "[Input Required:] UFO🛸 will apply {action} on the [{control_text}] item. Please confirm whether to proceed or not. Please input Y or N.".format(
+        "[Input Required:] UFO will apply {action} on the [{control_text}] item. Please confirm whether to proceed or not. Please input Y or N.".format(
             action=action, control_text=control_text
         ),
         "magenta",
