@@ -79,39 +79,68 @@ class BaseOpenAIService(BaseService):
 
         try:
             if self.config_llm.get("REASONING_MODEL", False):
-                response: Any = self.client.chat.completions.create(
-                    model=model,
-                    messages=messages,  # type: ignore
-                    n=1,
-                    stream=stream,
+                # Build GPT-5 parameters
+                api_params = {
+                    "model": model,
+                    "messages": messages,  # type: ignore
+                    "n": 1,
+                    "stream": stream,
                     **kwargs,
-                )
+                }
+
+                # Add GPT-5 specific parameters if available
+                if "gpt-5" in model.lower():
+                    if "REASONING_EFFORT" in self.config_llm:
+                        api_params["reasoning_effort"] = self.config_llm["REASONING_EFFORT"]
+                    if "VERBOSITY" in self.config_llm:
+                        api_params["verbosity"] = self.config_llm["VERBOSITY"]
+                    # Use max_completion_tokens for GPT-5
+                    if max_tokens is not None:
+                        api_params["max_completion_tokens"] = max_tokens
+
+                response: Any = self.client.chat.completions.create(**api_params)
             else:
                 if not stream:
-                    response: Any = self.client.chat.completions.create(
-                        model=model,
-                        messages=messages,  # type: ignore
-                        n=1,
-                        temperature=temperature,
-                        max_tokens=max_tokens,
-                        top_p=top_p,
-                        stream=stream,
+                    # Build API parameters
+                    api_params = {
+                        "model": model,
+                        "messages": messages,  # type: ignore
+                        "n": 1,
+                        "temperature": temperature,
+                        "top_p": top_p,
+                        "stream": stream,
                         **kwargs,
-                    )
+                    }
+
+                    # Use correct token parameter based on model
+                    if "gpt-5" in model.lower():
+                        api_params["max_completion_tokens"] = max_tokens
+                    else:
+                        api_params["max_tokens"] = max_tokens
+
+                    response: Any = self.client.chat.completions.create(**api_params)
                 else:
-                    response: Any = self.client.chat.completions.create(
-                        model=model,
-                        messages=messages,  # type: ignore
-                        n=1,
-                        temperature=temperature,
-                        max_tokens=max_tokens,
-                        top_p=top_p,
-                        stream=stream,
-                        stream_options={
+                    # Build API parameters for streaming
+                    api_params = {
+                        "model": model,
+                        "messages": messages,  # type: ignore
+                        "n": 1,
+                        "temperature": temperature,
+                        "top_p": top_p,
+                        "stream": stream,
+                        "stream_options": {
                             "include_usage": True,
                         },
                         **kwargs,
-                    )
+                    }
+
+                    # Use correct token parameter based on model
+                    if "gpt-5" in model.lower():
+                        api_params["max_completion_tokens"] = max_tokens
+                    else:
+                        api_params["max_tokens"] = max_tokens
+
+                    response: Any = self.client.chat.completions.create(**api_params)
             # response: Any = self.client.chat.completions.create(
             #     model=model,
             #     messages=messages,  # type: ignore
