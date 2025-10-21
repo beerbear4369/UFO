@@ -4,7 +4,7 @@
 from . import basic
 import os
 from langchain_community.document_loaders import UnstructuredXMLLoader
-from langchain.docstore.document import Document
+from langchain_core.documents import Document
 import xml.etree.ElementTree as ET
 
 
