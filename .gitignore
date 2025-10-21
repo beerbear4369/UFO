@@ -22,11 +22,11 @@ ufo/config/config_llm.yaml
 
 
 # Ignore the helper files
-ufo/rag/app_docs/*
-learner/records.json
-vectordb/docs/*
-vectordb/experience/*
-vectordb/demonstration/*
+# ufo/rag/app_docs/*
+# learner/records.json
+# vectordb/docs/*
+# vectordb/experience/*
+# vectordb/demonstration/*
 
 # Ignore the data files and scripts
 tasks/*
