@@ -2,15 +2,13 @@
     "application": "PROMAX.EXE",
     "request": "How to change the inlet temperature of a flow stream?",
     "guidance": [
-        "Double-click on the inlet stream (process stream) on the flowsheet to open its properties",
-        "located the opened Stream Properties Viewer window",
-        "In the Project Viewer window, click the 'Properties' tab make sure it is on foreground",
-        "Find the 'Temperature' field in the table",
-        "Click on the Row of 'Temperature' and column of 'Total' to enter the new temperature value",
-        "If user did not specify units, prompt user to decide on temperature units (°F or °C)",
-        "Click the cell next to 'Temperature' to set temperature units (°F or °C) from the dropdown if user specified",
+        "Double-click on the inlet stream (process stream) on the flowsheet to open its properties viewer window",
+        "locate 'Temperature' cell in the table",
+        "Double Click the 2nd cell right hand side of 'Temperature' to activate editing",
+        "enter value of inlet temperature", 
         "Press Enter or click outside the cell to confirm the change",
-        "Close the stream properties viewr window",
-        "The stream will turn brown indicating it is ready for execution"
+        "Close the stream properties viewr window by clicking the 'X' at the top right corner of the window",
+        "The stream will turn brown indicating it is ready for execution",
+        "take note the blue color figure in the table are editable values"
     ]
 }
