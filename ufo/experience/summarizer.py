@@ -6,7 +6,7 @@ import sys
 from typing import Tuple
 
 import yaml
-from langchain.docstore.document import Document
+from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 
 from ufo.experience.experience_parser import ExperienceLogLoader

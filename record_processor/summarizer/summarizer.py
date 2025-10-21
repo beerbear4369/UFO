@@ -5,7 +5,7 @@ import os
 from typing import Tuple
 
 import yaml
-from langchain.docstore.document import Document
+from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 
 from record_processor.parser.demonstration_record import DemonstrationRecord

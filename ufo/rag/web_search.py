@@ -2,8 +2,8 @@
 # Licensed under the MIT License.
 
 import requests
-from langchain.docstore.document import Document
-from langchain.text_splitter import HTMLHeaderTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import HTMLHeaderTextSplitter
 from langchain_community.vectorstores import FAISS
 
 from ufo.config.config import Config
