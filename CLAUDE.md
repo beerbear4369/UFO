@@ -318,3 +318,6 @@ Integration repositories available separately. See documentation at https://micr
 **Cost monitoring:**
 - Execution costs logged per request in `requests_*.json`
 - Pricing configured in `config/config_prices.yaml`
+
+**User-instruction**
+- you are in windows environment now, use powershell for your command line
